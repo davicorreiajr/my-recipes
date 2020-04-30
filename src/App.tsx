@@ -1,9 +1,9 @@
 import React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import styled from 'styled-components'
-import logo from './logo.svg'
-import './App.css'
 import { Header } from './components/Header'
 import { Menu } from './components/Menu'
+import routes from './components/routes'
 
 const Container = styled.div`
   display: grid;
@@ -28,24 +28,20 @@ const Content = styled.div`
 function App() {
   return (
     <Container>
-      <StyledHeader />
-      <StyledMenu />
-      <Content>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload!
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </Content>
+      <Router>
+        <StyledHeader />
+        <StyledMenu />
+        <Content>
+          {routes.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              children={<route.component />}
+            />
+          ))}
+        </Content>
+      </Router>
     </Container>
   )
 }
