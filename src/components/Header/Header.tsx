@@ -1,7 +1,11 @@
 import React from 'react'
 
-const Header = () => {
-  return <h1>Recipes</h1>
+type Props = {
+  className?: string
+}
+
+const Header = ({ className }: Props) => {
+  return <h1 className={className}>Recipes</h1>
 }
 
 export default Header

@@ -1,7 +1,11 @@
 import React from 'react'
 
-const Menu = () => {
-  return <p>Menu</p>
+type Props = {
+  className?: string
+}
+
+const Menu = ({ className }: Props) => {
+  return <p className={className}>Menu</p>
 }
 
 export default Menu
