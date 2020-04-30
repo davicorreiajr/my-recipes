@@ -8,12 +8,13 @@ import routes from './components/routes'
 const Container = styled.div`
   display: grid;
   grid-template:
-    'header header header header' auto
-    'menu content content content' auto
-    / 1fr 1fr 1fr 1fr;
+    'header header header header header' auto
+    'menu content content content content' 1fr
+    / 1fr 1fr 1fr 1fr 1fr;
   max-width: 1000px;
   margin: auto;
   padding: 0 1em;
+  height: 100vh;
 `
 const StyledHeader = styled(Header)`
   grid-area: header;
@@ -23,6 +24,7 @@ const StyledMenu = styled(Menu)`
 `
 const Content = styled.div`
   grid-area: content;
+  overflow-y: auto;
 `
 
 function App() {

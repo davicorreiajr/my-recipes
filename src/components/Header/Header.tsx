@@ -16,6 +16,7 @@ const StyledLink = styled(Link)`
   letter-spacing: 0.03em;
   text-align: center;
   padding: 0.5em 0;
+  margin-bottom: 0.5em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   &:hover {
     color: rgba(0, 0, 0, 0.85);

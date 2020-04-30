@@ -4,8 +4,8 @@ import { Tags } from '../Tags'
 import MenuItem from './MenuItem'
 
 const Container = styled.div`
-  padding-left: 1em;
   border-right: 1px solid rgba(0, 0, 0, 0.25);
+  margin-bottom: 0.5em;
 `
 
 type Props = {
@@ -15,7 +15,7 @@ type Props = {
 const Menu = ({ className }: Props) => {
   return (
     <Container className={className}>
-      <MenuItem value={'All'} linkTo={'all'} />
+      <MenuItem value={'All'} path={'/all'} />
       <MenuItem value={<Tags />} />
       <MenuItem value={'Feedback'} />
     </Container>
