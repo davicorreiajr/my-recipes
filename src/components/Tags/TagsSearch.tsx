@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Input } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
 import styled from 'styled-components'
+import { useLocation } from 'react-router-dom'
 
 const Container = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
+  padding: 1em;
 `
 const StyledIcon = styled(SearchOutlined)`
   margin-bottom: 0.5em;
@@ -38,8 +40,14 @@ type Props = {
 }
 
 const TagsSearch = ({ onChange }: Props) => {
-  const [inputValue, setInputValue] = useState()
+  const [inputValue, setInputValue] = useState('')
   const [timer, setTimer] = useState(0)
+  const location = useLocation()
+
+  useEffect(() => {
+    setInputValue('')
+    onChange(null)
+  }, [location, onChange])
 
   const handleOnChangeInput = (event: any) => {
     const value = event.target.value

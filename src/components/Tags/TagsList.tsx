@@ -8,8 +8,8 @@ type Props = {
 const TagsList = ({ tags }: Props) => {
   return (
     <div>
-      {tags.map(tag => (
-        <TagsItem tag={tag} />
+      {tags.map((tag, index) => (
+        <TagsItem key={index} tag={tag} />
       ))}
     </div>
   )

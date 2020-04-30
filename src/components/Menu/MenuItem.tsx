@@ -4,7 +4,6 @@ import { blue } from '@ant-design/colors'
 import { NavLink, useRouteMatch } from 'react-router-dom'
 
 const Container = styled.div<{ isActive: boolean }>`
-  padding: 1em;
   background-color: ${({ isActive }) => (isActive ? blue[0] : 'inherit')};
   border-right-width: ${({ isActive }) => (isActive ? '2px' : '0px')};
   border-right-style: solid;
@@ -15,6 +14,7 @@ const Container = styled.div<{ isActive: boolean }>`
   }
 `
 const textStyle = css`
+  padding: 1em;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 700;
