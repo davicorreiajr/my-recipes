@@ -15,9 +15,9 @@ type Props = {
 const Menu = ({ className }: Props) => {
   return (
     <Container className={className}>
-      <MenuItem value={'All'} path={'/all'} />
+      <MenuItem value="All" path="/all" />
       <MenuItem value={<Tags />} />
-      <MenuItem value={'Feedback'} />
+      <MenuItem value="Feedback" />
     </Container>
   )
 }
