@@ -13,6 +13,7 @@ const Container = styled.div`
     / 1fr 1fr 1fr 1fr;
   max-width: 1000px;
   margin: auto;
+  padding: 0 1em;
 `
 const StyledHeader = styled(Header)`
   grid-area: header;
