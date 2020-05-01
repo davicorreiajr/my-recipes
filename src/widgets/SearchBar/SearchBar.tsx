@@ -1,11 +1,11 @@
 import React, { useState, useReducer } from 'react'
 import styled from 'styled-components'
 import { Input } from 'antd'
-import { SearchOutlined } from '@ant-design/icons'
+import { SearchOutlined, CloseOutlined } from '@ant-design/icons'
 
 const Container = styled.div<{ isActive: boolean }>`
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   border-bottom: 1px solid ${({ theme }) => theme.colors.background};
   transition: border-color 0.2s ease-in;
@@ -13,7 +13,7 @@ const Container = styled.div<{ isActive: boolean }>`
     isActive ? theme.colors.primary.light : theme.colors.background};
 `
 const StyledIcon = styled(SearchOutlined)<{ isActive: boolean }>`
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.fontSizes.large};
   padding-right: 0.5em;
   color: ${({ isActive, theme }) =>
     isActive ? theme.colors.primary.default : theme.colors.black.default};
@@ -32,6 +32,20 @@ const StyledInput = styled(Input)`
   }
   &:hover {
     border: none;
+  }
+`
+const StyledButton = styled.button`
+  background-color: inherit;
+  border: none;
+  padding: 0;
+  width: 24px;
+  font-size: ${({ theme }) => theme.fontSizes.default};
+  box-shadow: none;
+  outline: none;
+  cursor: pointer;
+  transition: color 0.2s ease-in;
+  &:hover {
+    color: ${({ theme }) => theme.colors.primary.default};
   }
 `
 
@@ -75,9 +89,14 @@ const SearchBar = ({ placeholder, value = '', onChange, className }: Props) => {
   const handleOnChangeInput = (event: any) => {
     const value = event.target.value
     setInputValue(value)
-
     clearTimeout(timer)
     setTimer(setTimeout(() => onChange(value), 500))
+  }
+
+  const handleOnClear = () => {
+    clearTimeout(timer)
+    setInputValue('')
+    onChange('')
   }
 
   const { isFocused, isHovered } = state
@@ -98,6 +117,11 @@ const SearchBar = ({ placeholder, value = '', onChange, className }: Props) => {
           onFocus={() => dispatch({ type: 'onFocus' })}
           onBlur={() => dispatch({ type: 'onBlur' })}
         />
+        {inputValue && (
+          <StyledButton onClick={handleOnClear}>
+            <CloseOutlined />
+          </StyledButton>
+        )}
       </Container>
     </div>
   )

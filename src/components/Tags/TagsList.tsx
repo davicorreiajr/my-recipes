@@ -12,13 +12,11 @@ type Props = {
 
 const TagsList = ({ tags }: Props) => {
   return (
-    <div>
+    <Container>
       {tags.map((tag, index) => (
-        <Container>
-          <TagsItem key={index} tag={tag} />
-        </Container>
+        <TagsItem key={index} tag={tag} />
       ))}
-    </div>
+    </Container>
   )
 }
 

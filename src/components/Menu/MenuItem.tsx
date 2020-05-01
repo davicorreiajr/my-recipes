@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { useRouteMatch } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { CustomNavLink } from '../../widgets'
 
 const Container = styled.div<{ isActive: boolean }>`
@@ -24,11 +24,9 @@ type Props = {
 }
 
 const MenuItem = ({ value, path = '' }: Props) => {
-  const match = useRouteMatch({
-    path,
-    exact: true,
-  })
-  const isActive = Boolean(match && path)
+  const { search, pathname } = useLocation()
+  const completePath = pathname + search
+  const isActive = completePath === path
 
   return (
     <>
@@ -37,7 +35,16 @@ const MenuItem = ({ value, path = '' }: Props) => {
       ) : (
         <Container isActive={isActive}>
           {path ? (
-            <StyledCustomNavLink to={path}>{value}</StyledCustomNavLink>
+            <StyledCustomNavLink
+              to={path}
+              isActive={(match, location) => {
+                const { search, pathname } = location
+                const completePath = pathname + search
+                return completePath === path
+              }}
+            >
+              {value}
+            </StyledCustomNavLink>
           ) : (
             <Text>{value}</Text>
           )}

@@ -12,7 +12,7 @@ const theme = {
       default: 'rgb(24, 144, 255)',
     },
     black: {
-      light: 'rgba(0, 0, 0, 0.25)',
+      light: 'rgba(0, 0, 0, 0.15)',
       default: 'rgba(0, 0, 0, 0.65)',
       dark: 'rgba(0, 0, 0, 0.85)',
     },
