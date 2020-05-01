@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { NavLink, useRouteMatch } from 'react-router-dom'
+import { useRouteMatch } from 'react-router-dom'
+import { CustomNavLink } from '../../widgets'
 
 const Container = styled.div<{ isActive: boolean }>`
   ${props => props.theme.cssMenuItem(props.isActive)}
@@ -13,14 +14,8 @@ const textStyle = css`
 const Text = styled.p`
   ${textStyle}
 `
-const StyledLink = styled(NavLink)`
+const StyledCustomNavLink = styled(CustomNavLink)`
   ${textStyle}
-  display: block;
-  cursor: pointer;
-  transition: color 0.2s ease-in;
-  &:hover {
-    color: ${({ theme }) => theme.colors.primary.default};
-  }
 `
 
 type Props = {
@@ -42,7 +37,7 @@ const MenuItem = ({ value, path = '' }: Props) => {
       ) : (
         <Container isActive={isActive}>
           {path ? (
-            <StyledLink to={path}>{value}</StyledLink>
+            <StyledCustomNavLink to={path}>{value}</StyledCustomNavLink>
           ) : (
             <Text>{value}</Text>
           )}
