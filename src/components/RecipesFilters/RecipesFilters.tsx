@@ -4,7 +4,6 @@ import RecipesSearch from './RecipesSearch'
 
 const Container = styled.div`
   display: grid;
-  padding: ${({ theme }) => theme.spacing.base} 0;
 `
 
 const RecipesFilters = () => {

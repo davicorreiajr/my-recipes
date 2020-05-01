@@ -5,7 +5,7 @@ import MenuItem from './MenuItem'
 
 const Container = styled.div`
   border-right: 1px solid ${({ theme }) => theme.colors.black.light};
-  margin-bottom: ${({ theme }) => theme.spacing.halfBase};
+  margin: ${({ theme }) => theme.spacing.base} 0;
 `
 
 type Props = {
