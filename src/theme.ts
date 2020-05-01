@@ -1,6 +1,40 @@
-import { css } from 'styled-components'
+import {
+  css,
+  DefaultTheme,
+  FlattenInterpolation,
+  ThemeProps,
+} from 'styled-components'
 
-const theme = {
+declare module 'styled-components' {
+  export interface DefaultTheme {
+    spacing: {
+      halfBase: string
+      base: string
+    }
+    colors: {
+      background: string
+      primary: {
+        light: string
+        default: string
+      }
+      black: {
+        light: string
+        default: string
+        dark: string
+      }
+    }
+    fontSizes: {
+      small: string
+      default: string
+      large: string
+    }
+    cssMenuItem: (
+      isActive: boolean,
+    ) => FlattenInterpolation<ThemeProps<DefaultTheme>>
+  }
+}
+
+const theme: DefaultTheme = {
   spacing: {
     halfBase: '0.5rem',
     base: '1rem',

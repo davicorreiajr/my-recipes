@@ -1,5 +1,6 @@
 import React from 'react'
 import { Main } from './Main'
+import { HomePage } from './HomePage'
 
 const routes = [
   {
@@ -9,7 +10,7 @@ const routes = [
   },
   {
     path: '/all',
-    component: () => <h1>todas as receitas</h1>,
+    component: () => <HomePage />,
   },
   {
     path: '/recipe',
