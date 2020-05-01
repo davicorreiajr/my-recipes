@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Tags } from '../Tags'
 import MenuItem from './MenuItem'
+import MenuIcon from './MenuIcon'
 
 const Container = styled.div`
   border-right: 1px solid ${({ theme }) => theme.colors.black.light};
@@ -13,8 +14,14 @@ type Props = {
 }
 
 const Menu = ({ className }: Props) => {
+  const handleOnClick = () => {
+    // eslint-disable-next-line no-console
+    console.log('click no pai')
+  }
+
   return (
     <Container className={className}>
+      <MenuIcon onClick={handleOnClick} />
       <MenuItem value="All" path="/all" />
       <MenuItem value={<Tags />} />
       <MenuItem value="Feedback" />
