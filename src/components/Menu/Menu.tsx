@@ -10,8 +10,9 @@ const Container = styled.div`
 const Content = styled.div<{ isOpen: boolean }>`
   border-right: 1px solid ${({ theme }) => theme.colors.black.light};
   margin: ${({ theme }) => theme.spacing.base} 0;
-  width: ${({ isOpen }) => (isOpen ? 'auto' : 0)};
-  overflow: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
+  width: ${({ isOpen }) => (isOpen ? '100%' : '0%')};
+  overflow: hidden;
+  transition: width 1s ease-in-out;
 `
 
 type Props = {
@@ -21,15 +22,9 @@ type Props = {
 }
 
 const Menu = ({ className, onToggleMenu, isOpen }: Props) => {
-  const handleOnClick = () => {
-    // eslint-disable-next-line no-console
-    console.log('click no pai')
-    onToggleMenu()
-  }
-
   return (
     <Container className={className}>
-      <MenuIcon onClick={handleOnClick} />
+      <MenuIcon onClick={onToggleMenu} isOpen={isOpen} />
       <Content isOpen={isOpen}>
         <MenuItem value="All" path="/all" />
         <MenuItem value={<Tags />} />
