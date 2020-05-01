@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../App.css'
 import logo from '../../logo.svg'
 import styled from 'styled-components'
+import { SearchBar } from '../../widgets'
 
 const Container = styled.div`
   overflow-y: auto;
@@ -15,8 +16,11 @@ const Container = styled.div`
 `
 
 const Main = () => {
+  const [search, setSearch] = useState('')
   return (
     <Container>
+      <SearchBar placeholder="Busque por receita" onChange={setSearch} />
+      <p>{search}</p>
       <img src={logo} className="App-logo" alt="logo" />
       <p>
         Edit <code>src/App.tsx</code> and save to reload!
