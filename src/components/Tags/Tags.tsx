@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import TagsSearch from './TagsSearch'
 import TagsList from './TagsList'
 
@@ -11,14 +11,14 @@ const Tags = () => {
     setTags(MOCK_TAGS)
   }, [])
 
-  const handleOnChange = useCallback((value: string) => {
+  const handleOnChange = (value: string) => {
     if (!value) {
       setTags([...MOCK_TAGS])
       return
     }
     const newTags = MOCK_TAGS.filter(tag => tag.includes(value))
     setTags(newTags)
-  }, [])
+  }
 
   return (
     <>

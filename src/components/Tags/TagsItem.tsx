@@ -1,24 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
+import { CustomNavLink } from '../../widgets'
 
 const Container = styled.div<{ isActive: boolean }>`
   ${props => props.theme.cssMenuItem(props.isActive)};
   padding: ${({ theme }) => `${theme.spacing.halfBase} ${theme.spacing.base}`};
 `
-const StyledLink = styled(NavLink)`
-  color: ${({ theme }) => theme.colors.black.default};
-  display: block;
-  cursor: pointer;
-  transition: color 0.2s ease-in;
-  &:hover {
-    color: ${({ theme }) => theme.colors.primary.default};
-  }
-  .active {
-    color: none;
-  }
-`
-
 type Props = {
   tag: string
 }
@@ -36,7 +24,7 @@ const TagsItem = ({ tag }: Props) => {
 
   return (
     <Container isActive={isActive}>
-      <StyledLink
+      <CustomNavLink
         to={`/all?tags=${tag}`}
         isActive={(match, location) => {
           const query = new URLSearchParams(location.search)
@@ -45,7 +33,7 @@ const TagsItem = ({ tag }: Props) => {
         }}
       >
         {tag}
-      </StyledLink>
+      </CustomNavLink>
     </Container>
   )
 }

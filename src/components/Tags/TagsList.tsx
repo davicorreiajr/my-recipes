@@ -1,5 +1,10 @@
 import React from 'react'
+import styled from 'styled-components'
 import TagsItem from './TagsItem'
+
+const Container = styled.div`
+  padding-left: ${({ theme }) => theme.spacing.base};
+`
 
 type Props = {
   tags: string[]
@@ -7,11 +12,11 @@ type Props = {
 
 const TagsList = ({ tags }: Props) => {
   return (
-    <div>
+    <Container>
       {tags.map((tag, index) => (
         <TagsItem key={index} tag={tag} />
       ))}
-    </div>
+    </Container>
   )
 }
 

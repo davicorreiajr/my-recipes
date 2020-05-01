@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { NavLink, useRouteMatch } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import { CustomNavLink } from '../../widgets'
 
 const Container = styled.div<{ isActive: boolean }>`
   ${props => props.theme.cssMenuItem(props.isActive)}
@@ -13,14 +14,8 @@ const textStyle = css`
 const Text = styled.p`
   ${textStyle}
 `
-const StyledLink = styled(NavLink)`
+const StyledCustomNavLink = styled(CustomNavLink)`
   ${textStyle}
-  display: block;
-  cursor: pointer;
-  transition: color 0.2s ease-in;
-  &:hover {
-    color: ${({ theme }) => theme.colors.primary.default};
-  }
 `
 
 type Props = {
@@ -29,11 +24,9 @@ type Props = {
 }
 
 const MenuItem = ({ value, path = '' }: Props) => {
-  const match = useRouteMatch({
-    path,
-    exact: true,
-  })
-  const isActive = Boolean(match && path)
+  const { search, pathname } = useLocation()
+  const completePath = pathname + search
+  const isActive = completePath === path
 
   return (
     <>
@@ -42,7 +35,16 @@ const MenuItem = ({ value, path = '' }: Props) => {
       ) : (
         <Container isActive={isActive}>
           {path ? (
-            <StyledLink to={path}>{value}</StyledLink>
+            <StyledCustomNavLink
+              to={path}
+              isActive={(match, location) => {
+                const { search, pathname } = location
+                const completePath = pathname + search
+                return completePath === path
+              }}
+            >
+              {value}
+            </StyledCustomNavLink>
           ) : (
             <Text>{value}</Text>
           )}
