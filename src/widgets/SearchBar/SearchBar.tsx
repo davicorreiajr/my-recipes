@@ -2,30 +2,29 @@ import React, { useState, useReducer } from 'react'
 import styled from 'styled-components'
 import { Input } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
-import { blue } from '@ant-design/colors'
 
 const Container = styled.div<{ isActive: boolean }>`
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  border-bottom: 1px solid #fafafa;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.background};
   transition: border-color 0.2s ease-in;
-  border-bottom-color: ${({ isActive }) =>
-    isActive ? 'rgba(24, 144, 255, 0.2)' : '#fafafa;'};
+  border-bottom-color: ${({ isActive, theme }) =>
+    isActive ? theme.colors.primary.light : theme.colors.background};
 `
 const StyledIcon = styled(SearchOutlined)<{ isActive: boolean }>`
   font-size: 16px;
   padding-right: 0.5em;
-  color: ${({ isActive }) => (isActive ? blue.primary : 'rgba(0, 0, 0, 0.65)')};
+  color: ${({ isActive, theme }) =>
+    isActive ? theme.colors.primary.default : theme.colors.black.default};
   transition: color 0.2s ease-in;
 `
 const StyledInput = styled(Input)`
   border: none;
   padding: 0.4em 0;
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.fontSizes.default};
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.65);
+  color: ${({ theme }) => theme.colors.black.default};
   background-color: inherit;
   &:focus {
     box-shadow: none;

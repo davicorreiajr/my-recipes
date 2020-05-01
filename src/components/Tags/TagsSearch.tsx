@@ -3,7 +3,7 @@ import { SearchBar } from '../../widgets'
 import styled from 'styled-components'
 
 const StyledSearchBar = styled(SearchBar)`
-  padding: 1em;
+  padding: ${({ theme }) => theme.spacing.base};
 `
 
 type Props = {

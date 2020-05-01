@@ -4,8 +4,8 @@ import { Tags } from '../Tags'
 import MenuItem from './MenuItem'
 
 const Container = styled.div`
-  border-right: 1px solid rgba(0, 0, 0, 0.25);
-  margin-bottom: 0.5em;
+  border-right: 1px solid ${({ theme }) => theme.colors.black.light};
+  margin-bottom: calc(${({ theme }) => theme.spacing.base} / 2);
 `
 
 type Props = {

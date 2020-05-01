@@ -1,24 +1,14 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { blue } from '@ant-design/colors'
 import { NavLink, useRouteMatch } from 'react-router-dom'
 
 const Container = styled.div<{ isActive: boolean }>`
-  background-color: ${({ isActive }) => (isActive ? blue[0] : 'inherit')};
-  border-right-width: ${({ isActive }) => (isActive ? '2px' : '0px')};
-  border-right-style: solid;
-  border-right-color: ${blue.primary};
-  transition: background-color 0.2s ease-in, border-width 0.1s ease-in;
-  .active {
-    color: ${blue.primary};
-  }
+  ${props => props.theme.cssMenuItem(props.isActive)}
 `
 const textStyle = css`
-  padding: 1em;
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.fontSizes.large};
   font-weight: 700;
-  color: rgba(0, 0, 0, 0.65);
+  color: ${({ theme }) => theme.colors.black.default};
 `
 const Text = styled.p`
   ${textStyle}
@@ -29,7 +19,7 @@ const StyledLink = styled(NavLink)`
   cursor: pointer;
   transition: color 0.2s ease-in;
   &:hover {
-    color: ${blue.primary};
+    color: ${({ theme }) => theme.colors.primary.default};
   }
 `
 
@@ -46,15 +36,19 @@ const MenuItem = ({ value, path = '' }: Props) => {
   const isActive = Boolean(match && path)
 
   return (
-    <Container isActive={isActive}>
-      {typeof value === 'object' ? (
+    <>
+      {typeof value == 'object' ? (
         value
-      ) : path ? (
-        <StyledLink to={path}>{value}</StyledLink>
       ) : (
-        <Text>{value}</Text>
+        <Container isActive={isActive}>
+          {path ? (
+            <StyledLink to={path}>{value}</StyledLink>
+          ) : (
+            <Text>{value}</Text>
+          )}
+        </Container>
       )}
-    </Container>
+    </>
   )
 }
 

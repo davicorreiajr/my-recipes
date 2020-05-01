@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
+import theme from './theme'
 import { Header } from './components/Header'
 import { Menu } from './components/Menu'
 import routes from './components/routes'
@@ -31,18 +32,20 @@ function App() {
   return (
     <Container>
       <Router>
-        <StyledHeader />
-        <StyledMenu />
-        <Content>
-          {routes.map((route, index) => (
-            <Route
-              key={index}
-              path={route.path}
-              exact={route.exact}
-              children={<route.component />}
-            />
-          ))}
-        </Content>
+        <ThemeProvider theme={theme}>
+          <StyledHeader />
+          <StyledMenu />
+          <Content>
+            {routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                children={<route.component />}
+              />
+            ))}
+          </Content>
+        </ThemeProvider>
       </Router>
     </Container>
   )
