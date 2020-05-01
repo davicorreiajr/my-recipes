@@ -22,7 +22,7 @@ const StyledIcon = styled(SearchOutlined)<{ isActive: boolean }>`
 const StyledInput = styled(Input)`
   border: none;
   padding: 0.4em 0;
-  font-size: ${({ theme }) => theme.fontSizes.default};
+  font-size: ${({ theme }) => theme.fontSizes.large};
   font-weight: 400;
   color: ${({ theme }) => theme.colors.black.default};
   background-color: inherit;

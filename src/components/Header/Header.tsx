@@ -15,9 +15,9 @@ const StyledLink = styled(Link)`
   font-weight: 600;
   letter-spacing: 0.03em;
   text-align: center;
-  padding: calc(${({ theme }) => theme.spacing.base} / 2)
+  padding: ${({ theme }) => theme.spacing.halfBase}
     ${({ theme }) => theme.spacing.base};
-  margin-bottom: calc(${({ theme }) => theme.spacing.base} / 2);
+  margin-bottom: ${({ theme }) => theme.spacing.halfBase};
   border-bottom: 1px solid ${props => props.theme.colors.black.light};
   &:hover {
     color: ${props => props.theme.colors.black.default};

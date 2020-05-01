@@ -2,6 +2,7 @@ import { css } from 'styled-components'
 
 const theme = {
   spacing: {
+    halfBase: '0.5rem',
     base: '1rem',
   },
   colors: {

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Container = styled.div<{ isActive: boolean }>`
   ${props => props.theme.cssMenuItem(props.isActive)};
-  padding: calc(${({ theme }) => theme.spacing.base} / 2)
+  padding: ${({ theme }) => theme.spacing.halfBase}
     ${({ theme }) => theme.spacing.base};
 `
 const StyledLink = styled(NavLink)`
