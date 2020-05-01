@@ -1,17 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import styled, { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider, css } from 'styled-components'
 import theme from './theme'
 import { Header } from './components/Header'
 import { Menu } from './components/Menu'
 import routes from './components/routes'
 
-const Container = styled.div`
-  display: grid;
+const gridWithMenu = css`
   grid-template:
     'header header header header header' auto
     'menu content content content content' 1fr
     / 1fr 1fr 1fr 1fr 1fr;
+`
+const gridWithoutMenu = css`
+  grid-template:
+    'header header' auto
+    'menu content' 1fr
+    / auto 1fr;
+`
+const Container = styled.div<{ isMenuOpen: boolean }>`
+  display: grid;
+  ${({ isMenuOpen }) => (isMenuOpen ? gridWithMenu : gridWithoutMenu)}
   max-width: 1000px;
   margin: auto;
   padding: 0 1em;
@@ -29,12 +38,18 @@ const Content = styled.div`
 `
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(true)
+
+  const handleOnToggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+
   return (
-    <Container>
+    <Container isMenuOpen={isMenuOpen}>
       <Router>
         <ThemeProvider theme={theme}>
           <StyledHeader />
-          <StyledMenu />
+          <StyledMenu onToggleMenu={handleOnToggleMenu} isOpen={isMenuOpen} />
           <Content>
             {routes.map((route, index) => (
               <Route
