@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Menu, Dropdown, Button } from 'antd'
 import { DownOutlined } from '@ant-design/icons'
+import { useLanguage, LANGUAGES } from '../../i18n'
 
 const StyledButton = styled(Button)`
   padding-right: 0;
@@ -16,16 +17,22 @@ type Props = {
 }
 
 const LanguageSelector = ({ className }: Props) => {
-  const onClick = ({ key }: { key: string }) => {
-    // eslint-disable-next-line no-console
-    console.log('click on ', key)
+  const { language, setLanguage } = useLanguage()
+  const mapLanguagesToView = {
+    [LANGUAGES.enUk]: 'English (UK)',
+    [LANGUAGES.ptBr]: 'Português (BR)',
+  }
+
+  const onClick = ({ key }: any) => {
+    if (key === language) return
+    setLanguage(key)
   }
 
   const menu = (
     <Menu onClick={onClick}>
-      <Menu.Item key="1">1st menu item</Menu.Item>
-      <Menu.Item key="2">2nd memu item</Menu.Item>
-      <Menu.Item key="3">3rd menu item</Menu.Item>
+      {Object.entries(mapLanguagesToView).map(([key, value]) => (
+        <Menu.Item key={key}>{value}</Menu.Item>
+      ))}
     </Menu>
   )
 
@@ -33,7 +40,7 @@ const LanguageSelector = ({ className }: Props) => {
     <div className={className}>
       <Dropdown overlay={menu} trigger={['click']} placement="bottomRight">
         <StyledButton type="link">
-          Click me <DownOutlined />
+          {mapLanguagesToView[language]} <DownOutlined />
         </StyledButton>
       </Dropdown>
     </div>
