@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import LanguageSelector from './LanguageSelector'
+import { useTranslation } from '../../i18n'
 
 const Container = styled.div`
   position: relative;
@@ -16,7 +17,6 @@ const StyledLink = styled(Link)`
   letter-spacing: 0.03em;
   text-align: center;
   padding: ${({ theme }) => `${theme.spacing.halfBase} ${theme.spacing.base}`};
-  /* margin-bottom: ${({ theme }) => theme.spacing.halfBase}; */
   border-bottom: 1px solid ${props => props.theme.colors.black.light};
   &:hover {
     color: ${props => props.theme.colors.black.default};
@@ -33,9 +33,11 @@ type Props = {
 }
 
 const Header = ({ className }: Props) => {
+  const text = useTranslation('header.title')
+
   return (
     <Container className={className}>
-      <StyledLink to="/">My Recipes</StyledLink>
+      <StyledLink to="/">{text}</StyledLink>
       <StyledLanguageSelector />
     </Container>
   )

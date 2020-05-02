@@ -10,6 +10,11 @@ const pt_BR: Language = {
       placeholder: 'Categorias',
     },
   },
+  recipes: {
+    filters: {
+      searchBarPlaceholder: 'Busque por receitas',
+    },
+  },
 }
 
 export default pt_BR

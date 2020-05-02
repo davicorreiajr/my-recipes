@@ -8,5 +8,10 @@ declare interface Language {
       placeholder: string
     }
   }
+  recipes: {
+    filters: {
+      searchBarPlaceholder: string
+    }
+  }
 }
 export default Language

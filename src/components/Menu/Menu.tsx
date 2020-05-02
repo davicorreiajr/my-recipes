@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Tags } from '../Tags'
 import MenuItem from './MenuItem'
 import MenuIcon from './MenuIcon'
+import { useTranslation } from '../../i18n'
 
 const Container = styled.div`
   position: relative;
@@ -22,11 +23,13 @@ type Props = {
 }
 
 const Menu = ({ className, onToggleMenu, isOpen }: Props) => {
+  const all = useTranslation('menu.all')
+
   return (
     <Container className={className}>
       <MenuIcon onClick={onToggleMenu} isOpen={isOpen} />
       <Content isOpen={isOpen}>
-        <MenuItem value="All" path="/all" />
+        <MenuItem value={all} path="/all" />
         <MenuItem value={<Tags />} />
         <MenuItem value="Feedback" />
       </Content>

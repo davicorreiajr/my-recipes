@@ -10,6 +10,11 @@ const en_UK: Language = {
       placeholder: 'Tags',
     },
   },
+  recipes: {
+    filters: {
+      searchBarPlaceholder: 'Search for recipes',
+    },
+  },
 }
 
 export default en_UK
