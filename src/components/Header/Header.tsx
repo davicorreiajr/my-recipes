@@ -6,6 +6,9 @@ import { useTranslation } from '../../i18n'
 
 const Container = styled.div`
   position: relative;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid ${props => props.theme.colors.black.light};
 `
 const StyledLink = styled(Link)`
   display: block;
@@ -17,7 +20,6 @@ const StyledLink = styled(Link)`
   letter-spacing: 0.03em;
   text-align: center;
   padding: ${({ theme }) => `${theme.spacing.halfBase} ${theme.spacing.base}`};
-  border-bottom: 1px solid ${props => props.theme.colors.black.light};
   &:hover {
     color: ${props => props.theme.colors.black.default};
   }

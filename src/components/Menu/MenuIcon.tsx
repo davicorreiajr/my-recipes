@@ -23,7 +23,7 @@ const StyledButton = styled.button<{ isOpen: boolean }>`
   top: -14px;
   z-index: 999;
   font-size: 14px;
-  transition: color 1s ease-in, border-color 1s ease-in, left 1s ease-in-out;
+  transition: color 0.2s ease-in, border-color 0.2s ease-in, left 1s ease-in-out;
 `
 const StyledIcon = styled(RightOutlined)<{ isOpen: boolean }>`
   transition: transform 1s ease-in, margin 1s ease-in;
