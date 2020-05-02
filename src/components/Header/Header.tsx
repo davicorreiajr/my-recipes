@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import LanguageSelector from './LanguageSelector'
 
-type Props = {
-  className?: string
-}
-
+const Container = styled.div`
+  position: relative;
+`
 const StyledLink = styled(Link)`
   display: block;
   cursor: pointer;
@@ -22,12 +22,22 @@ const StyledLink = styled(Link)`
     color: ${props => props.theme.colors.black.default};
   }
 `
+const StyledLanguageSelector = styled(LanguageSelector)`
+  position: absolute;
+  top: 0;
+  right: 0;
+`
+
+type Props = {
+  className?: string
+}
 
 const Header = ({ className }: Props) => {
   return (
-    <div className={className}>
+    <Container className={className}>
       <StyledLink to="/">My Recipes</StyledLink>
-    </div>
+      <StyledLanguageSelector />
+    </Container>
   )
 }
 

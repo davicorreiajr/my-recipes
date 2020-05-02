@@ -5,6 +5,7 @@ import theme from './theme'
 import { Header } from './components/Header'
 import { Menu } from './components/Menu'
 import routes from './components/routes'
+import { LanguageProvider } from './i18n'
 
 const Container = styled.div<{ isMenuOpen: boolean }>`
   display: flex;
@@ -33,25 +34,29 @@ function App() {
   const handleOnToggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
-
   return (
     <Container isMenuOpen={isMenuOpen}>
       <Router>
         <ThemeProvider theme={theme}>
-          <Header />
-          <ContainerContent>
-            <StyledMenu onToggleMenu={handleOnToggleMenu} isOpen={isMenuOpen} />
-            <Content isOpen={isMenuOpen}>
-              {routes.map((route, index) => (
-                <Route
-                  key={index}
-                  path={route.path}
-                  exact={route.exact}
-                  children={<route.component />}
-                />
-              ))}
-            </Content>
-          </ContainerContent>
+          <LanguageProvider>
+            <Header />
+            <ContainerContent>
+              <StyledMenu
+                onToggleMenu={handleOnToggleMenu}
+                isOpen={isMenuOpen}
+              />
+              <Content isOpen={isMenuOpen}>
+                {routes.map((route, index) => (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    exact={route.exact}
+                    children={<route.component />}
+                  />
+                ))}
+              </Content>
+            </ContainerContent>
+          </LanguageProvider>
         </ThemeProvider>
       </Router>
     </Container>
