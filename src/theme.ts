@@ -7,6 +7,13 @@ import {
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    dimensions: {
+      pageWidth: string
+      headerHeight: {
+        xsmall: string
+        medium: string
+      }
+    }
     spacing: {
       halfBase: string
       base: string
@@ -31,10 +38,24 @@ declare module 'styled-components' {
     cssMenuItem: (
       isActive: boolean,
     ) => FlattenInterpolation<ThemeProps<DefaultTheme>>
+    devices: {
+      phone: string
+      tabletPortrait: string
+      tabletLandscape: string
+      laptop: string
+      laptopLarge: string
+    }
   }
 }
 
 const theme: DefaultTheme = {
+  dimensions: {
+    pageWidth: '1200px',
+    headerHeight: {
+      xsmall: '60px',
+      medium: '80px',
+    },
+  },
   spacing: {
     halfBase: '0.5rem',
     base: '1rem',
@@ -67,6 +88,13 @@ const theme: DefaultTheme = {
       color: ${({ theme }) => theme.colors.primary.default};
     }
   `,
+  devices: {
+    phone: 'only screen and (max-width: 576px)',
+    tabletPortrait: 'only screen and (min-width: 576px)',
+    tabletLandscape: 'only screen and (min-width: 768px)',
+    laptop: 'only screen and (min-width: 992px)',
+    laptopLarge: 'only screen and (min-width: 1200px)',
+  },
 }
 
 export default theme

@@ -13,17 +13,36 @@ const StyledButton = styled.button<{ isOpen: boolean }>`
   box-shadow: none;
   outline: none;
   cursor: pointer;
-  left: ${({ isOpen }) => (isOpen ? 'calc(100% - 14px)' : '-14px')};
   &:hover {
     color: ${({ theme }) => theme.colors.primary.default};
     border-color: ${({ theme }) => theme.colors.primary.default};
   }
   position: absolute;
-  right: -14px;
   top: -14px;
   z-index: 999;
   font-size: 14px;
-  transition: color 0.2s ease-in, border-color 0.2s ease-in, left 1s ease-in-out;
+  transition: color 0.2s ease-in, border-color 0.2s ease-in,
+    transform 1s ease-in-out;
+  @media ${({ theme }) => theme.devices.phone} {
+    ${({ isOpen }) =>
+    isOpen &&
+      css`
+        transform: translateX(calc(100vw - 28px));
+      `}
+  }
+  @media ${({ theme }) => theme.devices.tabletPortrait} {
+    ${({ isOpen }) =>
+    isOpen &&
+      css`
+        transform: translateX(calc(0.2 * 100vw - 14px));
+      `}
+  }
+  @media ${({ theme }) => theme.devices.laptopLarge} {
+    transform: ${({ isOpen, theme }) =>
+    isOpen
+      ? `translateX(calc(0.2 * ${theme.dimensions.pageWidth} - 14px))`
+      : 'translateX(-14px)'};
+  }
 `
 const StyledIcon = styled(RightOutlined)<{ isOpen: boolean }>`
   transition: transform 1s ease-in, margin 1s ease-in;

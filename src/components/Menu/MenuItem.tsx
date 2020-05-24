@@ -10,6 +10,7 @@ const textStyle = css`
   font-size: ${({ theme }) => theme.fontSizes.large};
   font-weight: 700;
   color: ${({ theme }) => theme.colors.black.default};
+  margin: 0;
 `
 const Text = styled.p`
   ${textStyle}
