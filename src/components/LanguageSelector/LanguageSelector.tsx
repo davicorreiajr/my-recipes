@@ -11,12 +11,12 @@ const StyledButton = styled(Button)`
     color: ${({ theme }) => theme.colors.primary.default};
   }
 `
-
 type Props = {
   className?: string
+  isMobile?: boolean
 }
 
-const LanguageSelector = ({ className }: Props) => {
+const LanguageSelector = ({ className, isMobile }: Props) => {
   const { language, setLanguage } = useLanguage()
   const mapLanguagesToView = {
     [LANGUAGES.enUk]: 'English (UK)',
@@ -38,7 +38,12 @@ const LanguageSelector = ({ className }: Props) => {
 
   return (
     <div className={className}>
-      <Dropdown overlay={menu} trigger={['click']} placement="bottomRight">
+      <Dropdown
+        overlayStyle={{ zIndex: 9999 }}
+        overlay={menu}
+        trigger={['click']}
+        placement={isMobile ? 'topRight' : 'bottomRight'}
+      >
         <StyledButton type="link">
           {mapLanguagesToView[language]} <DownOutlined />
         </StyledButton>

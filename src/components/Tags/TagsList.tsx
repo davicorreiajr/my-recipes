@@ -4,6 +4,9 @@ import TagsItem from './TagsItem'
 
 const Container = styled.div`
   padding-left: ${({ theme }) => theme.spacing.base};
+  /* Height to show up to 7.5 items at first */
+  max-height: 272px;
+  overflow-y: auto;
 `
 
 type Props = {
