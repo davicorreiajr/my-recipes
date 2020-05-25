@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Tags } from '../Tags'
 import MenuItem from './MenuItem'
 import MenuIcon from './MenuIcon'
+import { useAuth } from '../../hooks/Authentication'
 import { useTranslation } from '../../i18n'
 import { LanguageSelector } from '../LanguageSelector'
 
@@ -58,7 +59,7 @@ type Props = {
 
 const Menu = ({ className, onToggleMenu, isOpen }: Props) => {
   const all = useTranslation('menu.all')
-
+  const { isAuthenticated } = useAuth()
   return (
     <Container className={className} isOpen={isOpen}>
       <MenuIcon onClick={onToggleMenu} isOpen={isOpen} />
@@ -66,6 +67,7 @@ const Menu = ({ className, onToggleMenu, isOpen }: Props) => {
         <MenuItem value={all} path="/all" />
         <MenuItem value={<Tags />} />
         <MenuItem value="Feedback" />
+        {isAuthenticated && <MenuItem value="Logout" path="/logout" />}
         <StyledLanguageSelector isMobile />
       </Content>
     </Container>
