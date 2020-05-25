@@ -3,13 +3,34 @@
   "rules": {
     "no-console": "error",
     "no-debugger": "error",
-    "comma-dangle": ["error", "always-multiline"],
-    "indent": ["error", 2],
-    "quotes": ["error", "single", { "avoidEscape": true }],
-    "object-curly-spacing": ["error", "always"],
-    "eol-last": ["error", "always"],
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "indent": [
+      "error",
+      2
+    ],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "eol-last": [
+      "error",
+      "always"
+    ],
     "no-unused-vars": "error",
     "no-dupe-keys": "error",
-    "semi": ["error", "never"]
+    "semi": [
+      "error",
+      "never"
+    ]
   }
 }
